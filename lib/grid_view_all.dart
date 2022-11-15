@@ -18,6 +18,7 @@ class GridViewAllWidget extends StatefulWidget {
     this.itemsPerColumn = 3,
     this.shrinkWrap = false,
     this.makeScrollable = false,
+    this.shape = BoxShape.circle
   }) : super(key: key);
 
   /// Defines the number of items to show as default when the gridview is rendered.
@@ -55,6 +56,10 @@ class GridViewAllWidget extends StatefulWidget {
   /// Defines if the grid view is scrollable within its parent
   /// Default is false
   final bool makeScrollable;
+
+  /// Shape of items container
+  /// Default is BoxShape.circle
+  final BoxShape shape;
 
   @override
   State<StatefulWidget> createState() {
@@ -110,7 +115,7 @@ class _GridViewAllWidgetState extends State<GridViewAllWidget> {
         left: widget.leftPad,
       ),
       child: Container(
-        decoration: BoxDecoration(shape: BoxShape.circle, color: colors[index]),
+        decoration: BoxDecoration(shape: widget.shape, color: colors[index]),
         child: Center(
           child: item,
         ),
