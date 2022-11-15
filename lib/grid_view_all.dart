@@ -64,12 +64,17 @@ class GridViewAllWidget extends StatefulWidget {
 
 class _GridViewAllWidgetState extends State<GridViewAllWidget> {
   late List<Color> colors;
+  bool resizeGrid = false;
 
   Color _generateColor() {
     int r = Random().nextInt(256);
     int g = Random().nextInt(256);
     int b = Random().nextInt(256);
     return Color.fromRGBO(r, g, b, 0.6);
+  }
+
+  int _defaultItemsCount() {
+    return 4;
   }
 
   @override
@@ -90,7 +95,9 @@ class _GridViewAllWidgetState extends State<GridViewAllWidget> {
       itemBuilder: ((context, index) {
         return _buildGridItem(widget.items[index], index);
       }),
-      itemCount: widget.items.length,
+      itemCount: resizeGrid
+          ? widget.items.length ~/ _defaultItemsCount()
+          : widget.items.length,
     );
   }
 
