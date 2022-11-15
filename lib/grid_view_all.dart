@@ -103,6 +103,7 @@ class _GridViewAllWidgetState extends State<GridViewAllWidget> {
         left: widget.leftPad,
       ),
       child: Container(
+        decoration: BoxDecoration(shape: BoxShape.circle, color: colors[index]),
         child: Center(
           child: Text(item),
         ),
