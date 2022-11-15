@@ -1,5 +1,7 @@
 library grid_view_all;
 
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
 
 /// Defines a widget which is used to display a grid of items with a view all button
@@ -23,7 +25,7 @@ class GridViewAllWidget extends StatefulWidget {
   final int? defaultItemsCount;
 
   /// Defines List of items to be populated by the gridview
-  final List<String>? items;
+  final List<String> items;
 
   /// Defines the animation duration value for scrolling up the list
   final int? animationDuration;
@@ -80,13 +82,15 @@ class _GridViewAllWidgetState extends State<GridViewAllWidget> {
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: widget.shrinkWrap,
-      physics: widget.makeScrollable ? const ScrollPhysics() : const NeverScrollableScrollPhysics(),
+      physics: widget.makeScrollable
+          ? const ScrollPhysics()
+          : const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: widget.itemsPerColumn),
       itemBuilder: ((context, index) {
-        return _buildGridItem(widget.items![index], index);
+        return _buildGridItem(widget.items[index], index);
       }),
-      itemCount: widget.items!.length,
+      itemCount: widget.items.length,
     );
   }
 
