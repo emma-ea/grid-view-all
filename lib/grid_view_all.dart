@@ -61,6 +61,20 @@ class GridViewAllWidget extends StatefulWidget {
 }
 
 class _GridViewAllWidgetState extends State<GridViewAllWidget> {
+  late List<Color> colors;
+
+  Color _generateColor() {
+    int r = Random().nextInt(256);
+    int g = Random().nextInt(256);
+    int b = Random().nextInt(256);
+    return Color.fromRGBO(r, g, b, 1);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    colors = List.generate(widget.items.length, (index) => _generateColor());
+  }
 
   @override
   Widget build(BuildContext context) {
