@@ -25,7 +25,7 @@ class GridViewAllWidget extends StatefulWidget {
   final int? defaultItemsCount;
 
   /// Defines List of items to be populated by the gridview
-  final List<String> items;
+  final List<Icon> items;
 
   /// Defines the animation duration value for scrolling up the list
   final int? animationDuration;
@@ -69,7 +69,7 @@ class _GridViewAllWidgetState extends State<GridViewAllWidget> {
     int r = Random().nextInt(256);
     int g = Random().nextInt(256);
     int b = Random().nextInt(256);
-    return Color.fromRGBO(r, g, b, 1);
+    return Color.fromRGBO(r, g, b, 0.6);
   }
 
   @override
@@ -94,7 +94,7 @@ class _GridViewAllWidgetState extends State<GridViewAllWidget> {
     );
   }
 
-  Widget _buildGridItem(String item, int index) {
+  Widget _buildGridItem(Icon item, int index) {
     return Padding(
       padding: EdgeInsets.only(
         top: widget.topPad,
@@ -105,7 +105,7 @@ class _GridViewAllWidgetState extends State<GridViewAllWidget> {
       child: Container(
         decoration: BoxDecoration(shape: BoxShape.circle, color: colors[index]),
         child: Center(
-          child: Text(item),
+          child: item,
         ),
       ),
     );
